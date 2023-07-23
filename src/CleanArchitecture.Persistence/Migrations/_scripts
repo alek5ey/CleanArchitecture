@@ -1,0 +1,2 @@
+﻿dotnet ef migrations add Initial --project CleanArchitecture.Persistence --startup-project CleanArchitecture.Web
+dotnet ef database update --project CleanArchitecture.Persistence --startup-project CleanArchitecture.Web

@@ -1,6 +1,7 @@
 # A Simple Clean Architecture Project
 
 [![Tests](https://github.com/alek5ey/CleanArchitecture/actions/workflows/tests.yml/badge.svg)](https://github.com/alek5ey/CleanArchitecture/actions/workflows/tests.yml)
+[![CodeQL](https://github.com/alek5ey/CleanArchitecture/actions/workflows/codeql.yml/badge.svg)](https://github.com/alek5ey/CleanArchitecture/actions/workflows/codeql.yml)
 
 This is an ASP.NET Core Web API template project following clean architecture principles.   
 The project is a simple example of an online store.   

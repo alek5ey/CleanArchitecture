@@ -1,4 +1,7 @@
 # A Simple Clean Architecture Project
+
+[![Tests](https://github.com/alek5ey/CleanArchitecture/actions/workflows/tests.yml/badge.svg)](https://github.com/alek5ey/CleanArchitecture/actions/workflows/tests.yml)
+
 This is an ASP.NET Core Web API template project following clean architecture principles.   
 The project is a simple example of an online store.   
 You can use it as a base when developing your project.

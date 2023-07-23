@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Persistence;
+using MassTransit;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,11 +15,25 @@ public class ApiTestFixture : WebApplicationFactory<Program>
         
         builder.ConfigureServices(services =>
         {
-            var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<ApplicationDbContext>));
-            if (descriptor != null)
+            var forDeleteServiceDescriptors = services.Where(d => d.ServiceType == typeof(DbContextOptions<ApplicationDbContext>) ||
+                                                                  (d.ServiceType.Namespace?.StartsWith("MassTransit") ?? false)).ToList();
+            foreach (var descriptor in forDeleteServiceDescriptors)
                 services.Remove(descriptor);
             
             services.AddEntityFrameworkInMemoryDatabase();
+            
+            services.AddMassTransit(c =>
+            {
+                c.AddBus(provider =>
+                {
+                    var control = Bus.Factory.CreateUsingInMemory(cfg =>
+                    {
+                        cfg.ConfigureEndpoints(provider);
+                    });
+                    control.Start();
+                    return control;
+                });
+            });
 
             var provider = services
                 .AddEntityFrameworkInMemoryDatabase()

@@ -26,6 +26,7 @@ In **tests** folder located _UnitTests_, _IntegrationTests_ and _FunctionalTests
 * CQRS
 * Mediator
 * Repository (Read/Write)
+* Events (Doamin/Integration)
 * Unit of Work
 
 ## Technologies

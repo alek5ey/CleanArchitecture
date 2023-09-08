@@ -5,9 +5,8 @@ using CleanArchitecture.Domain.Primitives;
 
 namespace CleanArchitecture.Domain.Entites.Orders;
 
-public class Order : DomainEntity
+public class Order : DomainEntity<OrderId>
 {
-    public OrderId Id { get; private init; }
     public CustomerId CustomerId { get; private set; }
     public DateTimeOffset CreateTime { get; private set; }
     public string? Comment { get; private set; }

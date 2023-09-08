@@ -5,9 +5,8 @@ using CleanArchitecture.Domain.Primitives;
 
 namespace CleanArchitecture.Domain.Entites.OrderLines;
 
-public class OrderLine : DomainEntity
+public class OrderLine : DomainEntity<OrderLineId>
 {
-    public OrderLineId Id { get; private init; }
     public OrderId OrderId { get; private set; }
     public ProductId ProductId { get; private set; }
     public Money Price { get; private set; }

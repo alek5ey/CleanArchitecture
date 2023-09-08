@@ -3,9 +3,8 @@ using CleanArchitecture.Domain.Primitives;
 
 namespace CleanArchitecture.Domain.Entites.Customers;
 
-public class Customer : DomainEntity
+public class Customer : DomainEntity<CustomerId>
 {
-    public CustomerId Id { get; private init; }
     public string Email { get; private set; } = string.Empty;
     public string Name { get; private set; } = string.Empty;
     public string? Address { get; private set; }

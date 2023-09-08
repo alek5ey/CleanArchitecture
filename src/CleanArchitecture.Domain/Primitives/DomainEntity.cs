@@ -2,9 +2,11 @@
 
 namespace CleanArchitecture.Domain.Primitives;
 
-public abstract class DomainEntity
+public abstract class DomainEntity<TEntityId> : IDomainEntity
 {
     private readonly Queue<DomainEvent> _domainEvents = new();
+
+    public TEntityId Id { get; protected init; }
 
     public bool HasDomainEvents => _domainEvents.Any();
 

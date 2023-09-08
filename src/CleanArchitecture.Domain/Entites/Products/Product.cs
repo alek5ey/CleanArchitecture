@@ -3,9 +3,8 @@ using CleanArchitecture.Domain.Primitives;
 
 namespace CleanArchitecture.Domain.Entites.Products;
 
-public class Product : DomainEntity
+public class Product : DomainEntity<ProductId>
 {
-    public ProductId Id { get; private init; }
     public string Name { get; private set; }
     public Money Money { get; private set; }
     public Sku Sku { get; private set; }

@@ -35,7 +35,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        ProducedDomainEvents = ChangeTracker.Entries<DomainEntity>()
+        ProducedDomainEvents = ChangeTracker
+            .Entries<IDomainEntity>()
             .Select(e => e.Entity)
             .Where(e => e.HasDomainEvents)
             .SelectMany(e => e.GetDomainEvents())

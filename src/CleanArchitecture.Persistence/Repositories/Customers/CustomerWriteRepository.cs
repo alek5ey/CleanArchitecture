@@ -3,21 +3,9 @@ using CleanArchitecture.Domain.Repositories.Customers;
 
 namespace CleanArchitecture.Persistence.Repositories.Customers;
 
-public class CustomerWriteRepository : ICustomerWriteRepository
+public class CustomerWriteRepository : BaseRepository<Customer, CustomerId>, ICustomerWriteRepository
 {
-    private readonly ApplicationDbContext _context;
-    
-    public CustomerWriteRepository(ApplicationDbContext context)
+    public CustomerWriteRepository(ApplicationDbContext context) : base(context)
     {
-        _context = context;
     }
-    
-    public async Task AddAsync(Customer customer, CancellationToken cancellationToken = default) =>
-        await _context.AddAsync(customer, cancellationToken);
-
-    public void Update(Customer customer) =>
-        _context.Update(customer);
-
-    public void Remove(Customer customer) =>
-        _context.Remove(customer);
 }

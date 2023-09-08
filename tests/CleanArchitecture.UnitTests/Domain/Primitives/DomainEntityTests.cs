@@ -18,7 +18,7 @@ public class DomainEntityTests
         domainEntity.GetDomainEvents().Should().HaveCount(1);
     }
 
-    private class FakeDomainEntity : DomainEntity
+    private class FakeDomainEntity : DomainEntity<object>
     {
         public new void Raise(DomainEvent domainEvent) => base.Raise(domainEvent);
     }
